@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyEmailApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+    <% if usuario_signed_in? %>
+      <p>Hola,   <%= current_usuario.name %> - <%= link_to "Sign Out", destroy_usuario_session_path, :method => 'delete' %> </p>
+    <% else %>
+      <%= link_to "Sign In", new_usuario_session_path %>
+      <%= link_to "Sign Up", new_usuario_registration_path %>
+    <% end%>
+
+  <%= yield %>
+</div>
+
+</body>
+</html>
